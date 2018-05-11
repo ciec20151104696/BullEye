@@ -299,6 +299,7 @@
 				7D99AA4D20A51F3400D68639 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
