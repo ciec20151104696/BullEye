@@ -29,5 +29,8 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
+    @IBAction func sliderMovde(slider: UISlider) {
+        print("滑块现在所在位置是：\(slider.value)")
+    }
 }
 
