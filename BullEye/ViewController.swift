@@ -11,10 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     //存储滑块数字的变量
     var currentValue : Int = 0;
-    //储存滑块信息的变量
-    @IBOutlet weak var slider : UISlider!
     //定义随机数变量
     var targetvalue : Int = 0;
+    //储存滑块信息的变量
+    @IBOutlet weak var slider : UISlider!
+    @IBOutlet weak var targetLabel : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
 //        //添加随机数0~100，加上1，使它编程1~100以内的随机数
 //        targetvalue = 1 + Int(arc4random_uniform(100))
         startNewRound()
+        updateLabels()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +42,7 @@ class ViewController: UIViewController {
         //讲提示框和按钮相连接
         present(alert, animated: true, completion: nil)
         startNewRound()
+        updateLabels()
         
     }
     @IBAction func sliderMovde(slider: UISlider) {
@@ -53,6 +56,9 @@ class ViewController: UIViewController {
         targetvalue = 1 + Int(arc4random_uniform(100))
         currentValue = 50;
         slider.value = Float(currentValue)
+    }
+    func updateLabels() {
+        targetLabel.text = String(targetvalue)
     }
 }
 
