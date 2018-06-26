@@ -10,13 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     //存储滑块数字的变量
-    var currentValue : Int = 0;
+    var currentValue : Int = 50;
     //定义随机数变量
     var targetvalue : Int = 0;
+    var score = 0;
+    var round = 0;
     //储存滑块信息的变量
     @IBOutlet weak var slider : UISlider!
     @IBOutlet weak var targetLabel : UILabel!
-    
+    @IBOutlet weak var scoreLabel : UILabel!
+    @IBOutlet weak var roundLabel : UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,7 +36,7 @@ class ViewController: UIViewController {
     }
     @IBAction func showAlert() {
         //abs是绝对值
-        let difference = abs(currentValue - targetvalue);
+        let difference = abs(currentValue - targetvalue)
         let points = 100 - difference;
         
         /*if currentValue > targetvalue{
@@ -43,6 +46,7 @@ class ViewController: UIViewController {
         }else{
             difference = 0;
         }*/
+        score+=points;
         let  message = "你的得分是：\(points)"
         let alert = UIAlertController(title: "Hello World!", message: message, preferredStyle: .alert)
         //定义提示框信息
@@ -66,9 +70,12 @@ class ViewController: UIViewController {
         targetvalue = 1 + Int(arc4random_uniform(100))
         currentValue = 50;
         slider.value = Float(currentValue)
+        round+=1
     }
     func updateLabels() {
         targetLabel.text = String(targetvalue)
+        scoreLabel.text = String(score)
+        roundLabel.text = String(round)
     }
 }
 
