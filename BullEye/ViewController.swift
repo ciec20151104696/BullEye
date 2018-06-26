@@ -47,8 +47,20 @@ class ViewController: UIViewController {
             difference = 0;
         }*/
         score+=points;
+        let title:String
+        if difference==0 {
+            title = "完美击中目标！"
+        }else if difference < 5{
+            title = "就差一点点啦！"
+        }else if difference < 10{
+            title = "做的不错！"
+        }else{
+            title = "需要加油啦⛽️"
+        }
+        
+        
         let  message = "你的得分是：\(points)"
-        let alert = UIAlertController(title: "Hello World!", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         //定义提示框信息
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         //定义提示框内按钮
