@@ -32,8 +32,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func showAlert() {
-        let  message = "现在滑块所在的位置：\(currentValue)"+"\n目标位置是：\(targetvalue)"
+        //abs是绝对值
+        let difference = abs(currentValue - targetvalue);
+        let points = 100 - difference;
         
+        /*if currentValue > targetvalue{
+            difference = currentValue - targetvalue;
+        }else if currentValue < targetvalue{
+            difference = targetvalue - currentValue;
+        }else{
+            difference = 0;
+        }*/
+        let  message = "你的得分是：\(points)"
         let alert = UIAlertController(title: "Hello World!", message: message, preferredStyle: .alert)
         //定义提示框信息
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
