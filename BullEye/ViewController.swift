@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     @IBAction func showAlert() {
         //abs是绝对值
         let difference = abs(currentValue - targetvalue)
-        let points = 100 - difference;
+        var points = 100 - difference;
         
         /*if currentValue > targetvalue{
             difference = currentValue - targetvalue;
@@ -46,29 +46,29 @@ class ViewController: UIViewController {
         }else{
             difference = 0;
         }*/
-        score+=points;
+       
         let title:String
         if difference==0 {
             title = "完美击中目标！"
+            points+=100;
         }else if difference < 5{
             title = "就差一点点啦！"
+            points+=50;
         }else if difference < 10{
             title = "做的不错！"
         }else{
             title = "需要加油啦⛽️"
         }
-        
+         score+=points;
         
         let  message = "你的得分是：\(points)"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         //定义提示框信息
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels()})
         //定义提示框内按钮
         alert.addAction(action)
         //讲提示框和按钮相连接
         present(alert, animated: true, completion: nil)
-        startNewRound()
-        updateLabels()
         
     }
     @IBAction func sliderMovde(slider: UISlider) {
