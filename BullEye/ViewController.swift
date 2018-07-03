@@ -7,8 +7,9 @@
 //
 
 import UIKit
-
+import QuartzCore
 class ViewController: UIViewController {
+    
     //存储滑块数字的变量
     var currentValue : Int = 50;
     //定义随机数变量
@@ -92,6 +93,23 @@ class ViewController: UIViewController {
         alert.addAction(action)
         //讲提示框和按钮相连接
         present(alert, animated: true, completion: nil)
+        
+    }
+    @IBAction func resume(){
+        if roundLabel.text != "1" {
+            scoreLabel.text = "0";
+            roundLabel.text = "1";
+            currentValue = 50;
+            slider.value = Float(currentValue)
+            targetvalue = 1 + Int(arc4random_uniform(100))
+            targetLabel.text = String(targetvalue)
+  
+            let transition = CATransition();
+            transition.type = kCATransitionFade
+            transition.duration = 1;
+            transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            view.layer.add(transition, forKey: nil)
+        }
         
     }
     @IBAction func sliderMovde(slider: UISlider) {

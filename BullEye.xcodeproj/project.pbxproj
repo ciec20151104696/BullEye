@@ -10,21 +10,21 @@
 		7D36F0A520E5DE2900B04C7F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D36F0A420E5DE2900B04C7F /* AboutViewController.swift */; };
 		7D38129E20EA0E3100EC60FA /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D38129D20EA0E3100EC60FA /* Media.xcassets */; };
 		7D8EB52A20EB5DA900FBD852 /* BullsEye.html in Resources */ = {isa = PBXBuildFile; fileRef = 7D8EB52920EB5DA900FBD852 /* BullsEye.html */; };
+		7D8EB52C20EB724F00FBD852 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D8EB52B20EB724F00FBD852 /* Default-568h@2x.png */; };
 		7D99AA3D20A51F3400D68639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99AA3C20A51F3400D68639 /* AppDelegate.swift */; };
 		7D99AA3F20A51F3400D68639 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99AA3E20A51F3400D68639 /* ViewController.swift */; };
 		7D99AA4220A51F3400D68639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D99AA4020A51F3400D68639 /* Main.storyboard */; };
-		7D99AA4720A51F3400D68639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D99AA4520A51F3400D68639 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7D36F0A420E5DE2900B04C7F /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		7D38129D20EA0E3100EC60FA /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		7D8EB52920EB5DA900FBD852 /* BullsEye.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = BullsEye.html; path = ../../../BullsEye.html; sourceTree = "<group>"; };
+		7D8EB52B20EB724F00FBD852 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Default-568h@2x.png"; sourceTree = "<group>"; };
 		7D99AA3920A51F3400D68639 /* BullEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D99AA3C20A51F3400D68639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D99AA3E20A51F3400D68639 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7D99AA4120A51F3400D68639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7D99AA4620A51F3400D68639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D99AA4820A51F3400D68639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,11 +58,11 @@
 		7D99AA3B20A51F3400D68639 /* BullEye */ = {
 			isa = PBXGroup;
 			children = (
+				7D8EB52B20EB724F00FBD852 /* Default-568h@2x.png */,
 				7D8EB52920EB5DA900FBD852 /* BullsEye.html */,
 				7D99AA3C20A51F3400D68639 /* AppDelegate.swift */,
 				7D99AA3E20A51F3400D68639 /* ViewController.swift */,
 				7D99AA4020A51F3400D68639 /* Main.storyboard */,
-				7D99AA4520A51F3400D68639 /* LaunchScreen.storyboard */,
 				7D99AA4820A51F3400D68639 /* Info.plist */,
 				7D36F0A420E5DE2900B04C7F /* AboutViewController.swift */,
 				7D38129D20EA0E3100EC60FA /* Media.xcassets */,
@@ -129,10 +129,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D99AA4720A51F3400D68639 /* LaunchScreen.storyboard in Resources */,
 				7D8EB52A20EB5DA900FBD852 /* BullsEye.html in Resources */,
 				7D38129E20EA0E3100EC60FA /* Media.xcassets in Resources */,
 				7D99AA4220A51F3400D68639 /* Main.storyboard in Resources */,
+				7D8EB52C20EB724F00FBD852 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,14 +158,6 @@
 				7D99AA4120A51F3400D68639 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7D99AA4520A51F3400D68639 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7D99AA4620A51F3400D68639 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
