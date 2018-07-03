@@ -28,6 +28,29 @@ class ViewController: UIViewController {
 //        targetvalue = 1 + Int(arc4random_uniform(100))
         startNewRound()
         updateLabels()
+        //优化滑块
+        let thumbImageNormal = #imageLiteral(resourceName: "Sliderthumb_Normal")
+        slider.setThumbImage(thumbImageNormal, for: .normal)
+        
+        let  thumbImageHighlighted = #imageLiteral(resourceName: "SliderThumb-Highlighted")
+        slider.setThumbImage(thumbImageHighlighted, for: .highlighted)
+        
+        let insets = UIEdgeInsets(top: 14, left: 0, bottom: 0, right: 14)
+        
+        let trackLeftImage = #imageLiteral(resourceName: "SliderTrackLeft")
+        let trackLeftResizable = trackLeftImage.resizableImage(withCapInsets: insets)
+        
+        slider.setMinimumTrackImage(trackLeftResizable, for: .normal)
+        
+        
+        
+        
+        let trackRightImage = #imageLiteral(resourceName: "SliderTrackLeft")
+        let trackRightResizable = trackRightImage.resizableImage(withCapInsets: insets)
+        
+        slider.setMinimumTrackImage(trackRightResizable, for: .normal)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
