@@ -9,7 +9,10 @@
 import UIKit
 import QuartzCore
 class ViewController: UIViewController {
-    
+    var btn1:UIButton?
+    var timer:Timer?
+    var label:UILabel?
+    var a : Int = 0
     //存储滑块数字的变量
     var currentValue : Int = 50;
     //定义随机数变量
@@ -30,70 +33,149 @@ class ViewController: UIViewController {
         startNewRound()
         updateLabels()
         //优化滑块
-        let thumbImageNormal = #imageLiteral(resourceName: "Sliderthumb_Normal")
+        let thumbImageNormal = #imageLiteral(resourceName: "SliderThumb-Normal_Normal")
         slider.setThumbImage(thumbImageNormal, for: .normal)
-        
-        let  thumbImageHighlighted = #imageLiteral(resourceName: "SliderThumb-Highlighted")
+        let  thumbImageHighlighted = #imageLiteral(resourceName: "SliderThumb-Highlighted_Normal")
         slider.setThumbImage(thumbImageHighlighted, for: .highlighted)
-        
         let insets = UIEdgeInsets(top: 14, left: 0, bottom: 0, right: 14)
-        
-        let trackLeftImage = #imageLiteral(resourceName: "SliderTrackLeft")
+        let trackLeftImage = #imageLiteral(resourceName: "SliderTrackLeft_Normal")
         let trackLeftResizable = trackLeftImage.resizableImage(withCapInsets: insets)
-        
         slider.setMinimumTrackImage(trackLeftResizable, for: .normal)
-        
-        
-        
-        
-        let trackRightImage = #imageLiteral(resourceName: "SliderTrackLeft")
+        let trackRightImage = #imageLiteral(resourceName: "SliderTrackRight_Normal")
         let trackRightResizable = trackRightImage.resizableImage(withCapInsets: insets)
-        
         slider.setMinimumTrackImage(trackRightResizable, for: .normal)
-        
-        
-    }
+        setupUI()
+        if !(timer != nil) {
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerIntervalx), userInfo: nil, repeats: true)
+        }
 
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    @IBAction func showAlert() {
+       @IBAction func showAlert() {
+        timer?.invalidate()
+        timer = nil
         //abs是绝对值
         let difference = abs(currentValue - targetvalue)
         var points = 100 - difference;
-        
-        /*if currentValue > targetvalue{
-            difference = currentValue - targetvalue;
-        }else if currentValue < targetvalue{
-            difference = targetvalue - currentValue;
-        }else{
-            difference = 0;
-        }*/
-       
         let title:String
-        if difference==0 {
-            title = "完美击中目标！"
-            points+=100;
-        }else if difference < 5{
-            title = "就差一点点啦！"
-            points+=50;
-        }else if difference < 10{
-            title = "做的不错！"
-        }else{
-            title = "需要加油啦⛽️"
+        if a<5{
+            if difference==0 {
+                title = "完美击中目标！"
+                points+=50;
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                //定义提示框内按钮
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                 alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else if difference < 5{
+                title = "就差一点点啦！"
+                points+=40;
+                let  message = "你的得分是：\(points)"
+                 //定义提示框信息
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else if difference < 10{
+                title = "做的不错！"
+                points+=30;
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                //讲提示框和按钮相连接
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else{
+                title = "需要加油啦⛽️"
+                points+=20;
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }
         }
-         score+=points;
-        
-        let  message = "你的得分是：\(points)"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        //定义提示框信息
-        let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels()})
-        //定义提示框内按钮
-        alert.addAction(action)
-        //讲提示框和按钮相连接
-        present(alert, animated: true, completion: nil)
-        
+        else if a>5&&a<10{
+            if difference==0 {
+                title = "完美击中目标！"
+                points+=40;
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                //定义提示框内按钮
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else if difference < 5{
+                title = "就差一点点啦！"
+                points+=30;
+                let  message = "你的得分是：\(points)"
+                //定义提示框信息
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else if difference < 10{
+                title = "需要加油啦⛽️"
+                points+=20;
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                //讲提示框和按钮相连接
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else{
+                title = "要加快速度哦😯"
+                points+=10;
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }
+        }
+        else if a>10{
+            if difference==0 {
+                title = "完美击中目标！"
+                points+=30;
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                //定义提示框内按钮
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else if difference < 5{
+                title = "就差一点点啦！"
+                points+=20;
+                let  message = "你的得分是：\(points)"
+                //定义提示框信息
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else if difference < 10{
+                title = "需要加油啦⛽️"
+                points+=10;
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                //讲提示框和按钮相连接
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }else{
+                title = "注意时间😯"
+                let  message = "你的得分是：\(points)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+            }
+        }
+        score+=points;
+        a=0;
+        label?.text = "time \(a)"
     }
     @IBAction func resume(){
         if roundLabel.text != "1" {
@@ -103,20 +185,18 @@ class ViewController: UIViewController {
             slider.value = Float(currentValue)
             targetvalue = 1 + Int(arc4random_uniform(100))
             targetLabel.text = String(targetvalue)
-  
             let transition = CATransition();
             transition.type = kCATransitionFade
             transition.duration = 1;
             transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
             view.layer.add(transition, forKey: nil)
         }
-        
+
     }
     @IBAction func sliderMovde(slider: UISlider) {
         //对slider.value 取整,离他最近的一个整数
         currentValue = lroundf(slider.value)
         print("滑块现在所在位置是：\(currentValue)")
-        
     }
     //开始一轮新的游戏
     func startNewRound() {
@@ -130,5 +210,51 @@ class ViewController: UIViewController {
         scoreLabel.text = String(score)
         roundLabel.text = String(round)
     }
+    
+    func setupUI() {
+        
+        let button = UIButton(frame:CGRect(x: 190, y: 204, width:50, height: 50))
+        button.addTarget(self, action: #selector(startCLick(item:)), for: .touchUpInside)
+        button.layer.cornerRadius = 25
+        button.clipsToBounds = true
+        button.setTitle("开始", for: .normal)
+        btn1 = button
+        view.addSubview(button)
+        
+        let btn = UIButton(frame:CGRect(x: 310, y: 204, width: 50, height: 50))
+        btn.addTarget(self, action: #selector(startCLick(item:)), for: .touchUpInside)
+        btn.setTitle("暂停", for: UIControlState.normal)
+        view .addSubview(btn)
+        
+        let lab = UILabel(frame: CGRect(x: 225, y: 204, width: 100, height: 50))
+        lab.textAlignment = .center
+        lab.font = .systemFont(ofSize: 18)
+        lab.textColor = .white
+        view.addSubview(lab)
+        label = lab
+        lab.text = "time"
+    }
+    
+    func timerIntervalx() {
+        a+=1;
+        label?.text = "time \(a)"
+    }
+    func startCLick(item:UIButton) {
+        if item.isEqual(btn1) {
+            timeStart()
+        }
+        else
+        {
+            timePause()
+        }
+    }
+    func timeStart() {
+        if !(timer != nil) {
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerIntervalx), userInfo: nil, repeats: true)
+        }
+    }
+    func timePause() {
+        timer?.invalidate()
+        timer = nil
+    }
 }
-

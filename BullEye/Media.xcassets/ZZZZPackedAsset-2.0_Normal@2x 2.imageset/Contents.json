@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "ZZZZPackedAsset-2.0_Normal@2x 2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Background_Normal@2x.png",
       "scale" : "2x"
     },
     {
