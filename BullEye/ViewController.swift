@@ -311,10 +311,11 @@ class ViewController: UIViewController {
         label = lab
         lab.text = "time"
         
-        let Tuichu = UIButton(frame:CGRect(x: 450, y: 250, width:50, height: 50))
-        Tuichu.setImage(UIImage(named:"Button-Normal_Normal"), for: UIControlState())
+        let Tuichu = UIButton(frame:CGRect(x: 450, y: 250, width:50, height: 30))
+        Tuichu.setBackgroundImage(UIImage(named:"Button-Normal_Normal"), for: .normal)
+        Tuichu.setBackgroundImage(UIImage(named:"Button-Normal_Normal"), for: .highlighted)
         Tuichu.addTarget(self, action: #selector(startCLick(item:)), for: .touchUpInside)
-        Tuichu.layer.cornerRadius = 25
+        Tuichu.layer.cornerRadius = 5
         Tuichu.clipsToBounds = true
         Tuichu.setTitle("退出", for: .normal)
         btn2 = Tuichu
