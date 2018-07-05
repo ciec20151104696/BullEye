@@ -140,6 +140,13 @@
                                                 <color key="shadowColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 <size key="shadowOffset" width="0.0" height="1"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcY-SE-Byv">
+                                                <rect key="frame" x="126" y="241" width="212" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="13"/>
+                                                <color key="textColor" red="0.98298354129999999" green="1" blue="0.98044563959999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -164,6 +171,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="newtime" destination="DcY-SE-Byv" id="g3k-Xg-bhb"/>
                         <outlet property="roundLabel" destination="2E8-BG-KIT" id="HWQ-sw-keg"/>
                         <outlet property="scoreLabel" destination="Yqd-fR-NW1" id="zQG-KM-A9j"/>
                         <outlet property="slider" destination="rgQ-II-wG3" id="Z2v-n0-btH"/>
