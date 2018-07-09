@@ -23,16 +23,6 @@ class LoginController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     func setupUI() {
         let button = UIButton(frame:CGRect(x: 180, y: 220, width:94, height: 28))
         button.setBackgroundImage(UIImage(named:"Button-Normal_Normal"), for: .normal)

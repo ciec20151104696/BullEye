@@ -93,7 +93,8 @@ class ViewController: UIViewController {
                                            handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
                  alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else if difference < 5{
+            }
+            else if difference < 5{
                 title = "就差一点点啦！"
                 points+=8;
                 let  message = "你的得分是：\(points)"
@@ -103,7 +104,8 @@ class ViewController: UIViewController {
                                            handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else if difference < 10{
+            }
+            else if difference < 10{
                 title = "做的不错！"
                 points+=6;
                 let  message = "你的得分是：\(points)"
@@ -113,7 +115,8 @@ class ViewController: UIViewController {
                 //讲提示框和按钮相连接
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else{
+            }
+            else{
                 title = "需要加油啦⛽️"
                 points+=4;
                 let  message = "你的得分是：\(points)"
@@ -135,7 +138,8 @@ class ViewController: UIViewController {
                                            handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else if difference < 5{
+            }
+            else if difference < 5{
                 title = "就差一点点啦！"
                 points+=7;
                 let  message = "你的得分是：\(points)"
@@ -145,7 +149,8 @@ class ViewController: UIViewController {
                                            handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else if difference < 10{
+            }
+            else if difference < 10{
                 title = "需要加油啦⛽️"
                 points+=5;
                 let  message = "你的得分是：\(points)"
@@ -155,7 +160,8 @@ class ViewController: UIViewController {
                 //讲提示框和按钮相连接
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else{
+            }
+            else{
                 title = "要加快速度哦😯"
                 points+=3;
                 let  message = "你的得分是：\(points)"
@@ -178,7 +184,8 @@ class ViewController: UIViewController {
                                            handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else if difference < 5{
+            }
+            else if difference < 5{
                 title = "就差一点点啦！"
                 points+=4;
                 let  message = "你的得分是：\(points)"
@@ -188,7 +195,8 @@ class ViewController: UIViewController {
                                            handler:{ action in self.startNewRound();self.updateLabels();self.timeStart()})
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else if difference < 10{
+            }
+            else if difference < 10{
                 title = "需要加油啦⛽️"
                 points+=2;
                 let  message = "你的得分是：\(points)"
@@ -198,7 +206,8 @@ class ViewController: UIViewController {
                 //讲提示框和按钮相连接
                 alert.addAction(action)
                 present(alert, animated: true, completion: nil)
-            }else{
+            }
+            else{
                 title = "注意时间😯"
                 let  message = "你的得分是：\(points)"
                 let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -296,12 +305,12 @@ class ViewController: UIViewController {
         button.clipsToBounds = true
         button.setTitle("开始", for: .normal)
         btn1 = button
-        view.addSubview(button)
+        //view.addSubview(button)
         
         let btn = UIButton(frame:CGRect(x: 310, y: 204, width: 50, height: 50))
         btn.addTarget(self, action: #selector(startCLick(item:)), for: .touchUpInside)
         btn.setTitle("暂停", for: UIControlState.normal)
-        view .addSubview(btn)
+        //view .addSubview(btn)
         
         let lab = UILabel(frame: CGRect(x: 225, y: 204, width: 100, height: 50))
         lab.textAlignment = .center
@@ -369,6 +378,7 @@ class ViewController: UIViewController {
                 if hour<0 {
                     day=day-1;
                 }
+                
             }
             else{
                 if hour<0 {
@@ -388,6 +398,7 @@ class ViewController: UIViewController {
                 if hour<0 {
                     day=day-1;
                 }
+                
             }
         }
         if day == 0 {
@@ -398,6 +409,7 @@ class ViewController: UIViewController {
                 else{
                     title = "你确定要离开？\n游戏时间：\(minute) m \(second)s "
                 }
+                
             }
             else{
                 title = "你确定要离开？\n游戏时间：\(hour) h \(minute) m \(second)s "
